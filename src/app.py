@@ -1,2 +1,3 @@
 def foo_header():
-    return 1
+    value = 10
+    return value * 2
