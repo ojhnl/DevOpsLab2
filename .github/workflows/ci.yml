@@ -44,7 +44,7 @@ jobs:
             RANGE="${{ github.event.before }}..${{ github.sha }}"
           fi
 
-          if git log -p --format= "$RANGE" | grep -Ein 'password|key='; then
+          if git log -p --format= "$RANGE" -- . ':!.github/workflows/ci.yml' | grep -Ein 'password|key='; then
             echo "Обнаружены потенциальные пароли или ключи!"
             exit 1
           else
